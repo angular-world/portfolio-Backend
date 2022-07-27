@@ -15,13 +15,14 @@ public class Experiencia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;;
+    private int id;
+    ;
     private int persona_id;
     @Size(max = 45)
     private String puesto;
     @Size(max = 45)
     private String empleador;
-    @Size(max = 11)
+    @Size(max = 45)
     private String fecha;
     @Size(max = 300)
     private String descripcion;
