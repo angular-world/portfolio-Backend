@@ -15,6 +15,7 @@ public class Proyecto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    private int persona_id;
     private String titulo;
     private String descripcion;
     private String img_url;
