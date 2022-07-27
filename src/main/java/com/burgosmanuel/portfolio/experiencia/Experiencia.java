@@ -14,7 +14,8 @@ public class Experiencia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int id;;
+    private int persona_id;
     private String puesto;
     private String empleador;
     private String fecha;
