@@ -26,7 +26,7 @@ public class PersonaController {
         service.crearPersona(pers);
     }
 
-    @PutMapping("editar/persona/{id}")
+    @PutMapping("personas/editar/{id}")
     public void editarPersona(@PathVariable int id, @RequestBody Persona datosPersona) {
         service.editarPersona(id, datosPersona);
     }

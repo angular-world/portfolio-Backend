@@ -1,9 +1,11 @@
 package com.burgosmanuel.portfolio.habilidad;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,12 +15,15 @@ public class Habilidad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;;
+    private int id;
     private int persona_id;
     private int tipo_habilidad_id;
     private int nivel_habilidad_id;
+    @Size(max = 45)
     private String nombre;
+    @Size(max = 100)
     private int progreso;
+    @Size(max = 100)
     private String icono;
 
     public Habilidad() {

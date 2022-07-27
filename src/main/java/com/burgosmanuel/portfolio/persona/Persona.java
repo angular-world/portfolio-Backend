@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,13 +16,21 @@ public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Size(max = 45)
     private String nombre;
+    @Size(max = 45)
     private String titulo;
+    @Size(max = 45)
     private String email;
+    @Size(max = 60)
     private String linkedin_url;
+    @Size(max = 60)
     private String github_url;
+    @Size(max = 100)
     private String img_url;
+    @Size(max = 100)
     private String banner_url;
+    @Size(max = 100)
     private String about_url;
 
     public Persona() {

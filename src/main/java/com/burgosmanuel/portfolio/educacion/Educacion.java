@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,11 +17,14 @@ public class Educacion {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int persona_id;
+    @Size(max = 45)
     private String titulo;
+    @Size(max = 45)
     private String institucion;
+    @Size(max = 11)
     private String fecha;
+    @Size(max = 300)
     private String descripcion;
-
     public Educacion() {
     }
 
