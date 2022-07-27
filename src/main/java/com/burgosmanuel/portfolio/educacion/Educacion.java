@@ -21,10 +21,11 @@ public class Educacion {
     private String titulo;
     @Size(max = 45)
     private String institucion;
-    @Size(max = 11)
+    @Size(max = 45)
     private String fecha;
     @Size(max = 300)
     private String descripcion;
+    
     public Educacion() {
     }
 

@@ -1,13 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.burgosmanuel.portfolio.educacion;
 
-/**
- *
- * @author Trapecio
- */
+import java.util.List;
+
 public interface IEducacionService {
+    public void agregarEducacion(Educacion edu);
     
+    public void editarEducacion(int id, Educacion datosEducacion);
+    
+    public List<Educacion> listarEducacion();
+    
+    public Educacion buscarEducacion(int id);
+    
+    public void borrarEducacion(int id);
 }
