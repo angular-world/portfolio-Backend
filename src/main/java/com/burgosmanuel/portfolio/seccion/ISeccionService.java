@@ -1,13 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.burgosmanuel.portfolio.seccion;
 
-/**
- *
- * @author Trapecio
- */
+import java.util.List;
+
+
 public interface ISeccionService {
+    public void crearSeccion(Seccion sec);
     
+    public List<Seccion> listarSecciones();
+    
+    public void eliminarSeccion(int id);
+    
+    public void editarSeccion(int id, Seccion datosSeccion);
+    
+    public Seccion buscarSeccion(int id);
 }

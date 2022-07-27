@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,10 +17,15 @@ public class Proyecto {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int persona_id;
+    @Size(max = 45)
     private String titulo;
+    @Size(max = 500)
     private String descripcion;
+    @Size(max = 100)
     private String img_url;
+    @Size(max = 100)
     private String demo_url;
+    @Size(max = 100)
     private String repo_url;
 
     public Proyecto() {
