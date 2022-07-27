@@ -20,4 +20,16 @@ public class Seccion {
     private int persona_id;
     private String titulo;
     private String descripcion;
+
+    public Seccion() {
+    }
+
+    public Seccion(int id, int persona_id, String titulo, String descripcion) {
+        this.id = id;
+        this.persona_id = persona_id;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+    }
+    
+    
 }

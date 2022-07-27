@@ -24,13 +24,13 @@ public class Habilidad {
     public Habilidad() {
     }
 
-    public Habilidad(int id, int tipo_habilidad_id, int nivel_habilidad_id, String nombre, int progreso, String icono) {
+    public Habilidad(int id, int persona_id, int tipo_habilidad_id, int nivel_habilidad_id, String nombre, int progreso, String icono) {
         this.id = id;
+        this.persona_id = persona_id;
         this.tipo_habilidad_id = tipo_habilidad_id;
         this.nivel_habilidad_id = nivel_habilidad_id;
         this.nombre = nombre;
         this.progreso = progreso;
         this.icono = icono;
     }
-
 }
