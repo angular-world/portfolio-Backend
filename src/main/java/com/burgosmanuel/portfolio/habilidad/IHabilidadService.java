@@ -1,13 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.burgosmanuel.portfolio.habilidad;
 
-/**
- *
- * @author Trapecio
- */
+import java.util.List;
+
 public interface IHabilidadService {
+
+    public void agregarHabilidad(Habilidad hab);
+    
+    public void editarHabilidad(int id, Habilidad datsoHabilidad);
+    
+    public Habilidad buscarHabilidad(int id);
+    
+    public List<Habilidad> listarHabilidades();
+    
+    public void borrarHabilidad(int id);
     
 }
