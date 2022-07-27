@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.burgosmanuel.portfolio.persona;
 
-/**
- *
- * @author Trapecio
- */
 public interface IPersonaService {
-    
+    public Persona buscarPersona(int id);
+    public void crearPersona(Persona pers);
+    public void editarPersona(int id, Persona datosPersona);
 }
