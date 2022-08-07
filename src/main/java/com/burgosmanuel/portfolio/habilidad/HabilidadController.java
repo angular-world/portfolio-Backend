@@ -2,6 +2,7 @@ package com.burgosmanuel.portfolio.habilidad;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,36 +10,41 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
+@RequestMapping("/habilidades")
 public class HabilidadController {
 
     @Autowired
     HabilidadService service;
 
-    @PostMapping("/habilidades/agregar")
+    @PostMapping("/agregar")
+    @PreAuthorize("hasRole('ADMIN')")
     public void agregarHabilidad(@RequestBody Habilidad hab) {
         service.agregarHabilidad(hab);
     }
 
-    @PutMapping("/habilidades/editar/{id}")
+    @PutMapping("/editar/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public void editarHabilidad(@PathVariable int id, @RequestBody Habilidad datosHabilidad) {
         service.editarHabilidad(id, datosHabilidad);
     }
 
-    @GetMapping("/habilidades/{id}")
+    @GetMapping("/{id}")
     public Habilidad buscarHabilidad(@PathVariable int id) {
         return service.buscarHabilidad(id);
     }
 
-    @GetMapping("/habilidades")
+    @GetMapping("/listar")
     public List<Habilidad> listarHabilidades() {
         return service.listarHabilidades();
     }
 
-    @DeleteMapping("/habilidades/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public void borrarHabilidad(@PathVariable int id) {
         service.borrarHabilidad(id);
     }
