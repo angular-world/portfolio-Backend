@@ -29,8 +29,7 @@ public class Educacion {
     public Educacion() {
     }
 
-    public Educacion(int id, int persona_id, String titulo, String institucion, String fecha, String descripcion) {
-        this.id = id;
+    public Educacion(int persona_id, String titulo, String institucion, String fecha, String descripcion) {
         this.persona_id = persona_id;
         this.titulo = titulo;
         this.institucion = institucion;

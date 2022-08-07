@@ -28,8 +28,7 @@ public class Seccion {
     public Seccion() {
     }
 
-    public Seccion(int id, int persona_id, String titulo, String descripcion) {
-        this.id = id;
+    public Seccion(int persona_id, String titulo, String descripcion) {
         this.persona_id = persona_id;
         this.titulo = titulo;
         this.descripcion = descripcion;

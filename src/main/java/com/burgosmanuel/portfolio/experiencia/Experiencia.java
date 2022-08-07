@@ -30,8 +30,7 @@ public class Experiencia {
     public Experiencia() {
     }
 
-    public Experiencia(int id, int persona_id, String puesto, String empleador, String fecha, String descripcion) {
-        this.id = id;
+    public Experiencia(int persona_id, String puesto, String empleador, String fecha, String descripcion) {
         this.persona_id = persona_id;
         this.puesto = puesto;
         this.empleador = empleador;
