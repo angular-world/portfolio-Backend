@@ -31,8 +31,7 @@ public class Proyecto {
     public Proyecto() {
     }
 
-    public Proyecto(int id, int persona_id, String titulo, String descripcion, String img_url, String demo_url, String repo_url) {
-        this.id = id;
+    public Proyecto(int persona_id, String titulo, String descripcion, String img_url, String demo_url, String repo_url) {
         this.persona_id = persona_id;
         this.titulo = titulo;
         this.descripcion = descripcion;
