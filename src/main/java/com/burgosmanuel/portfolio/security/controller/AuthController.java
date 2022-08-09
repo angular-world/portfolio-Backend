@@ -1,7 +1,11 @@
 package com.burgosmanuel.portfolio.security.controller;
 
+import com.burgosmanuel.portfolio.educacion.EducacionService;
+import com.burgosmanuel.portfolio.experiencia.ExperienciaService;
+import com.burgosmanuel.portfolio.habilidad.HabilidadService;
 import com.burgosmanuel.portfolio.persona.Persona;
 import com.burgosmanuel.portfolio.persona.PersonaService;
+import com.burgosmanuel.portfolio.proyecto.ProyectoService;
 import com.burgosmanuel.portfolio.seccion.SeccionService;
 import com.burgosmanuel.portfolio.security.entity.ERole;
 import com.burgosmanuel.portfolio.security.entity.Role;
@@ -47,6 +51,14 @@ public class AuthController {
     SeccionService seccionService;
     @Autowired
     PersonaService personaService;
+    @Autowired
+    EducacionService educacionService;
+    @Autowired
+    ExperienciaService experienciaService;
+    @Autowired
+    HabilidadService habilidadService;
+    @Autowired
+    ProyectoService proyectoService;
     @Autowired
     PasswordEncoder encoder;
     @Autowired
@@ -102,6 +114,11 @@ public class AuthController {
         Persona nuevaPersona = new Persona(user.getId(), "Nombre y Apellido", "Titulo", "https://www.linkedin.com", "https://github.com", "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png", "https://cabaretfestival.es/wp-content/uploads/2020/07/Hero-Banner-Placeholder-Light-1024x480-1.png", "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png");
         personaService.crearPersona(nuevaPersona);
         seccionService.crearSeccionesDefault(user.getId());
+        educacionService.crearEducacionDefault(user.getId());
+        experienciaService.crearExperienciaDefault(user.getId());
+        habilidadService.crearHabilidadDefault(user.getId());
+        proyectoService.crearProyectoDefault(user.getId());
+        
         return ResponseEntity.ok(new MessageResponse("¡El usuario se registró con éxito!"));
     }
 }

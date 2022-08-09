@@ -12,4 +12,6 @@ public interface IEducacionService {
     public Educacion buscarEducacion(Long id);
     
     public void borrarEducacion(Long id);
+    
+    public void crearEducacionDefault(Long persona_id);
 }

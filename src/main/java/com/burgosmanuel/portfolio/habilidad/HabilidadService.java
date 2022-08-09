@@ -37,4 +37,16 @@ public class HabilidadService implements IHabilidadService {
         repo.deleteById(id);
     }
 
+    @Override
+    public void crearHabilidadDefault(Long persona_id) {
+        Habilidad defaultFront = new Habilidad(persona_id, "Frontend", "Intermedio", "Habilidad Front #1", 80, "fa-brands fa-angular");
+        Habilidad defaultBack = new Habilidad(persona_id, "Backend", "Intermedio", "Habilidad Back #1", 80, "fa-brands fa-java");
+        Habilidad defaultSoft = new Habilidad(persona_id, "Soft", "", "Habilidad Blanda #1", 100, "fa-solid fa-comment-dots");
+
+        repo.save(defaultFront);
+        repo.save(defaultBack);
+        repo.save(defaultSoft);
+    }
+;
+
 }

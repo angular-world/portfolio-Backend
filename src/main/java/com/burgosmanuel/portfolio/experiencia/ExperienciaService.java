@@ -37,4 +37,11 @@ public class ExperienciaService implements IExperienciaService {
         Experiencia exp = buscarExperiencia(id);
         repo.delete(exp);
     }
+
+    @Override
+    public void crearExperienciaDefault(Long persona_id) {
+        Experiencia expDefault = new Experiencia(persona_id, "Puesto", "Empresa", "Inicio - Fin", "Descripción...");
+        repo.save(expDefault);
+    }
+
 }
