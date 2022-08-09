@@ -13,4 +13,6 @@ public interface IProyectoService {
     public List<Proyecto> listarProyectos();
     
     public void borrarProyecto(Long id);  
+    
+    public void crearProyectoDefault(Long persona_id);
 }

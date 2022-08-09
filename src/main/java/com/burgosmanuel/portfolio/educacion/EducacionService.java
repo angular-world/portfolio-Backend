@@ -37,4 +37,12 @@ public class EducacionService implements IEducacionService {
         Educacion edu = buscarEducacion(id);
         repo.delete(edu);
     }
+    
+    @Override
+    public void crearEducacionDefault(Long persona_id){
+        Educacion eduDefault = new Educacion(persona_id, "Título", "Institución", "Inicio - Fin", "Descripción...");
+        
+        repo.save(eduDefault);
+    };
+
 }
