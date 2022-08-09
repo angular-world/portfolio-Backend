@@ -10,7 +10,7 @@ public class PersonaService implements IPersonaService {
     PersonaRepository repo;
 
     @Override
-    public Persona buscarPersona(int id) {
+    public Persona buscarPersona(Long id) {
         return repo.findById(id).orElse(null);
     }
 
@@ -20,7 +20,7 @@ public class PersonaService implements IPersonaService {
     }
 
     @Override
-    public void editarPersona(int id, Persona datosPersona) {
+    public void editarPersona(Long id, Persona datosPersona) {
         Persona pers = buscarPersona(id);
         pers = datosPersona;
         repo.save(pers);

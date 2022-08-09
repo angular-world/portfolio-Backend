@@ -1,5 +1,8 @@
 package com.burgosmanuel.portfolio.security.controller;
 
+import com.burgosmanuel.portfolio.persona.Persona;
+import com.burgosmanuel.portfolio.persona.PersonaService;
+import com.burgosmanuel.portfolio.seccion.SeccionService;
 import com.burgosmanuel.portfolio.security.entity.ERole;
 import com.burgosmanuel.portfolio.security.entity.Role;
 import com.burgosmanuel.portfolio.security.entity.User;
@@ -41,6 +44,10 @@ public class AuthController {
     @Autowired
     RoleRepository roleRepository;
     @Autowired
+    SeccionService seccionService;
+    @Autowired
+    PersonaService personaService;
+    @Autowired
     PasswordEncoder encoder;
     @Autowired
     JwtUtils jwtUtils;
@@ -71,26 +78,30 @@ public class AuthController {
         Set<String> strRoles = registerRequest.getRole();
         Set<Role> roles = new HashSet();
         if (strRoles == null) {
-            Role userRole = roleRepository.findByName(ERole.ROLE_USER).orElseThrow(() -> new RuntimeException("Error: No se encontró el rol especificado."));
+            Role userRole = roleRepository.findByName(ERole.ROLE_ADMIN).orElseThrow(() -> new RuntimeException("Error: No se encontró el rol especificado."));
             roles.add(userRole);
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
-                    case "admin":
-                        Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
-                                .orElseThrow(() -> new RuntimeException("Error: No se encontró el rol especificado."));
-                        roles.add(adminRole);
-                        break;
-                    default:
+                    case "user":
                         Role userRole = roleRepository.findByName(ERole.ROLE_USER)
                                 .orElseThrow(() -> new RuntimeException("Error: No se encontró el rol especificado."));
                         roles.add(userRole);
+                        break;
+                    default:
+                        Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+                                .orElseThrow(() -> new RuntimeException("Error: No se encontró el rol especificado."));
+                        roles.add(adminRole);
 
                 }
             });
         }
         user.setRoles(roles);
         userRepository.save(user);
+        // Creamos una nueva entrada en "Persona" cuando nos registramos, a modo de placeholder. TODO: Enlazar las demas tablas a persona y modificar la ID en el front.
+        Persona nuevaPersona = new Persona(user.getId(), "Nombre y Apellido", "Titulo", "https://www.linkedin.com", "https://github.com", "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png", "https://cabaretfestival.es/wp-content/uploads/2020/07/Hero-Banner-Placeholder-Light-1024x480-1.png", "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png");
+        personaService.crearPersona(nuevaPersona);
+        seccionService.crearSeccionesDefault(user.getId());
         return ResponseEntity.ok(new MessageResponse("¡El usuario se registró con éxito!"));
     }
 }

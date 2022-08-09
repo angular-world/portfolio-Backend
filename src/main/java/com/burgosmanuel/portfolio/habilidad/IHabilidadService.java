@@ -6,12 +6,12 @@ public interface IHabilidadService {
 
     public void agregarHabilidad(Habilidad hab);
     
-    public void editarHabilidad(int id, Habilidad datsoHabilidad);
+    public void editarHabilidad(Long id, Habilidad datsoHabilidad);
     
-    public Habilidad buscarHabilidad(int id);
+    public Habilidad buscarHabilidad(Long id);
     
     public List<Habilidad> listarHabilidades();
     
-    public void borrarHabilidad(int id);
+    public void borrarHabilidad(Long id);
     
 }

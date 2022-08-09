@@ -29,12 +29,12 @@ public class HabilidadController {
 
     @PutMapping("/editar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void editarHabilidad(@PathVariable int id, @RequestBody Habilidad datosHabilidad) {
+    public void editarHabilidad(@PathVariable Long id, @RequestBody Habilidad datosHabilidad) {
         service.editarHabilidad(id, datosHabilidad);
     }
 
     @GetMapping("/{id}")
-    public Habilidad buscarHabilidad(@PathVariable int id) {
+    public Habilidad buscarHabilidad(@PathVariable Long id) {
         return service.buscarHabilidad(id);
     }
 
@@ -45,7 +45,7 @@ public class HabilidadController {
 
     @DeleteMapping("/eliminar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void borrarHabilidad(@PathVariable int id) {
+    public void borrarHabilidad(@PathVariable Long id) {
         service.borrarHabilidad(id);
     }
 }

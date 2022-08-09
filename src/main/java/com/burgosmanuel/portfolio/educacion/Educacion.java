@@ -15,8 +15,8 @@ public class Educacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private int persona_id;
+    private Long id;
+    private Long persona_id;
     @Size(max = 45)
     private String titulo;
     @Size(max = 45)
@@ -29,7 +29,7 @@ public class Educacion {
     public Educacion() {
     }
 
-    public Educacion(int persona_id, String titulo, String institucion, String fecha, String descripcion) {
+    public Educacion(Long persona_id, String titulo, String institucion, String fecha, String descripcion) {
         this.persona_id = persona_id;
         this.titulo = titulo;
         this.institucion = institucion;

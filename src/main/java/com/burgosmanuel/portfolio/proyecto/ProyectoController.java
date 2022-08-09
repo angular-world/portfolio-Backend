@@ -29,12 +29,12 @@ public class ProyectoController {
 
     @PutMapping("/editar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void editarProyecto(@PathVariable int id, @RequestBody Proyecto datosProyecto) {
+    public void editarProyecto(@PathVariable Long id, @RequestBody Proyecto datosProyecto) {
         service.editarProyecto(id, datosProyecto);
     }
 
     @GetMapping("/{id}")
-    public Proyecto buscarProyecto(@PathVariable int id) {
+    public Proyecto buscarProyecto(@PathVariable Long id) {
         return service.buscarProyecto(id);
     }
 
@@ -45,7 +45,7 @@ public class ProyectoController {
 
     @DeleteMapping("/eliminar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void borrarProyecto(@PathVariable int id) {
+    public void borrarProyecto(@PathVariable Long id) {
         service.borrarProyecto(id);
     }
 }

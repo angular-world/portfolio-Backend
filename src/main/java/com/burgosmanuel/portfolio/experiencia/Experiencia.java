@@ -15,9 +15,8 @@ public class Experiencia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    ;
-    private int persona_id;
+    private Long id;
+    private Long persona_id;
     @Size(max = 45)
     private String puesto;
     @Size(max = 45)
@@ -30,7 +29,7 @@ public class Experiencia {
     public Experiencia() {
     }
 
-    public Experiencia(int persona_id, String puesto, String empleador, String fecha, String descripcion) {
+    public Experiencia(Long persona_id, String puesto, String empleador, String fecha, String descripcion) {
         this.persona_id = persona_id;
         this.puesto = puesto;
         this.empleador = empleador;

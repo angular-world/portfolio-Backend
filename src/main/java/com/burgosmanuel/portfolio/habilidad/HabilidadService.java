@@ -16,14 +16,14 @@ public class HabilidadService implements IHabilidadService {
     }
 
     @Override
-    public void editarHabilidad(int id, Habilidad datosHabilidad) {
+    public void editarHabilidad(Long id, Habilidad datosHabilidad) {
         Habilidad hab = buscarHabilidad(id);
         hab = datosHabilidad;
         repo.save(hab);
     }
 
     @Override
-    public Habilidad buscarHabilidad(int id) {
+    public Habilidad buscarHabilidad(Long id) {
         return repo.findById(id).orElse(null);
     }
 
@@ -33,7 +33,7 @@ public class HabilidadService implements IHabilidadService {
     }
 
     @Override
-    public void borrarHabilidad(int id) {
+    public void borrarHabilidad(Long id) {
         repo.deleteById(id);
     }
 

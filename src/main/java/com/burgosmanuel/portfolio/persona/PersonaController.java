@@ -20,7 +20,7 @@ public class PersonaController {
     PersonaService service;
 
     @GetMapping("/{id}")
-    public Persona buscarPersona(@PathVariable int id) {
+    public Persona buscarPersona(@PathVariable Long id) {
         return service.buscarPersona(id);
     }
 
@@ -32,7 +32,7 @@ public class PersonaController {
 
     @PutMapping("/editar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void editarPersona(@PathVariable int id, @RequestBody Persona datosPersona) {
+    public void editarPersona(@PathVariable Long id, @RequestBody Persona datosPersona) {
         service.editarPersona(id, datosPersona);
     }
 }

@@ -16,14 +16,14 @@ public class ProyectoService implements IProyectoService {
     }
     
     @Override
-    public void editarProyecto(int id, Proyecto datosProyecto) {
+    public void editarProyecto(Long id, Proyecto datosProyecto) {
         Proyecto proj = buscarProyecto(id);
         proj = datosProyecto;
         repo.save(proj);
     }
     
     @Override
-    public Proyecto buscarProyecto(int id) {
+    public Proyecto buscarProyecto(Long id) {
         return repo.findById(id).orElse(null);
     }
     
@@ -33,7 +33,7 @@ public class ProyectoService implements IProyectoService {
     }
     
     @Override
-    public void borrarProyecto(int id) {
+    public void borrarProyecto(Long id) {
         repo.deleteById(id);
     }
     

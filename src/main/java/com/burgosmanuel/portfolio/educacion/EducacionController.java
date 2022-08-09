@@ -29,7 +29,7 @@ public class EducacionController {
 
     @PutMapping("/editar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void editarEducacion(@PathVariable int id, @RequestBody Educacion datosEducacion) {
+    public void editarEducacion(@PathVariable Long id, @RequestBody Educacion datosEducacion) {
         service.editarEducacion(id, datosEducacion);
     }
 
@@ -39,13 +39,13 @@ public class EducacionController {
     }
 
     @GetMapping("/{id}")
-    public Educacion buscarEducacion(@PathVariable int id) {
+    public Educacion buscarEducacion(@PathVariable Long id) {
         return service.buscarEducacion(id);
     }
 
     @DeleteMapping("/eliminar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void borrarEducacion(@PathVariable int id) {
+    public void borrarEducacion(@PathVariable Long id) {
         service.borrarEducacion(id);
     }
 }

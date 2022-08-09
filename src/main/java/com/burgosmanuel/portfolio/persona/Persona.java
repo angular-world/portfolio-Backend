@@ -15,8 +15,7 @@ import lombok.Setter;
 public class Persona {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     @NotNull
     @Size(min = 4, max = 60)
     private String nombre;
@@ -32,7 +31,8 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(String nombre, String titulo, String linkedin_url, String github_url, String img_url, String banner_url, String about_url) {
+    public Persona(Long id,String nombre, String titulo, String linkedin_url, String github_url, String img_url, String banner_url, String about_url) {
+        this.id = id;
         this.nombre = nombre;
         this.titulo = titulo;
         this.linkedin_url = linkedin_url;
