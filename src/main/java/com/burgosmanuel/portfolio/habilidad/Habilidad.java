@@ -16,8 +16,8 @@ public class Habilidad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private int persona_id;
+    private Long id;
+    private Long persona_id;
     @Size(max = 45)
     private String tipo;
     @Size(max = 45)
@@ -32,7 +32,7 @@ public class Habilidad {
     public Habilidad() {
     }
 
-    public Habilidad(int persona_id, String tipo, String nivel, String nombre, int progreso, String icono) {
+    public Habilidad(Long persona_id, String tipo, String nivel, String nombre, int progreso, String icono) {
         this.persona_id = persona_id;
         this.tipo = tipo;
         this.nivel = nivel;

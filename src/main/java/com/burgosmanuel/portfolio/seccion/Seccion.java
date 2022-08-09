@@ -18,8 +18,8 @@ public class Seccion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private int persona_id;
+    private Long id;
+    private Long persona_id;
     @Size(max = 45)
     private String titulo;
     @Size(max = 500)
@@ -28,7 +28,7 @@ public class Seccion {
     public Seccion() {
     }
 
-    public Seccion(int persona_id, String titulo, String descripcion) {
+    public Seccion(Long persona_id, String titulo, String descripcion) {
         this.persona_id = persona_id;
         this.titulo = titulo;
         this.descripcion = descripcion;

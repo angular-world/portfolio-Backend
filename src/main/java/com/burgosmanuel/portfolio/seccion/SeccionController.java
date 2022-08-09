@@ -33,19 +33,19 @@ public class SeccionController {
     }
 
     @GetMapping("/{id}")
-    public Seccion buscarSeccion(@PathVariable int id) {
+    public Seccion buscarSeccion(@PathVariable Long id) {
         return service.buscarSeccion(id);
     }
 
     @PutMapping("/editar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void editarSeccion(@PathVariable int id, @RequestBody Seccion sec) {
+    public void editarSeccion(@PathVariable Long id, @RequestBody Seccion sec) {
         service.editarSeccion(id, sec);
     }
 
     @DeleteMapping("/eliminar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void eliminarSeccion(@PathVariable int id) {
+    public void eliminarSeccion(@PathVariable Long id) {
         service.eliminarSeccion(id);
     }
 }

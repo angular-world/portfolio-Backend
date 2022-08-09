@@ -15,8 +15,8 @@ public class Proyecto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private int persona_id;
+    private Long id;
+    private Long persona_id;
     @Size(max = 45)
     private String titulo;
     @Size(max = 500)
@@ -31,7 +31,7 @@ public class Proyecto {
     public Proyecto() {
     }
 
-    public Proyecto(int persona_id, String titulo, String descripcion, String img_url, String demo_url, String repo_url) {
+    public Proyecto(Long persona_id, String titulo, String descripcion, String img_url, String demo_url, String repo_url) {
         this.persona_id = persona_id;
         this.titulo = titulo;
         this.descripcion = descripcion;

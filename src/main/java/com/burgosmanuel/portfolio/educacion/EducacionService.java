@@ -16,7 +16,7 @@ public class EducacionService implements IEducacionService {
     }
 
     @Override
-    public void editarEducacion(int id, Educacion datosEducacion) {
+    public void editarEducacion(Long id, Educacion datosEducacion) {
         Educacion edu = buscarEducacion(id);
         edu = datosEducacion;
         repo.save(edu);
@@ -28,12 +28,12 @@ public class EducacionService implements IEducacionService {
     }
 
     @Override
-    public Educacion buscarEducacion(int id) {
+    public Educacion buscarEducacion(Long id) {
         return repo.findById(id).orElse(null);
     }
 
     @Override
-    public void borrarEducacion(int id) {
+    public void borrarEducacion(Long id) {
         Educacion edu = buscarEducacion(id);
         repo.delete(edu);
     }

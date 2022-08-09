@@ -29,7 +29,7 @@ public class ExperienciaController {
 
     @PutMapping("/editar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void editarExperiencia(@PathVariable int id, @RequestBody Experiencia datosExperiencia) {
+    public void editarExperiencia(@PathVariable Long id, @RequestBody Experiencia datosExperiencia) {
         service.editarExperiencia(id, datosExperiencia);
     }
 
@@ -39,13 +39,13 @@ public class ExperienciaController {
     }
 
     @GetMapping("/{id}")
-    public Experiencia buscarExperiencia(@PathVariable int id) {
+    public Experiencia buscarExperiencia(@PathVariable Long id) {
         return service.buscarExperiencia(id);
     }
 
     @DeleteMapping("/eliminar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void borrarExperiencia(@PathVariable int id) {
+    public void borrarExperiencia(@PathVariable Long id) {
         service.borrarExperiencia(id);
     }
 }

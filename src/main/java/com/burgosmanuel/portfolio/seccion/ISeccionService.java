@@ -8,9 +8,11 @@ public interface ISeccionService {
     
     public List<Seccion> listarSecciones();
     
-    public void eliminarSeccion(int id);
+    public void eliminarSeccion(Long id);
     
-    public void editarSeccion(int id, Seccion datosSeccion);
+    public void editarSeccion(Long id, Seccion datosSeccion);
     
-    public Seccion buscarSeccion(int id);
+    public Seccion buscarSeccion(Long id);
+    
+    public void crearSeccionesDefault(Long personaId);
 }
