@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+//@Entity -> Eliminamos ya que no la utilizamos por ahora
 @Getter
 @Setter
 public class NivelHabilidad {
