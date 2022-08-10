@@ -1,5 +1,7 @@
 package com.burgosmanuel.portfolio.seccion;
 
+import com.burgosmanuel.portfolio.security.entity.User;
+import com.burgosmanuel.portfolio.security.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ public class SeccionService implements ISeccionService {
 
     @Autowired
     SeccionRepository repo;
+    @Autowired
+    UserRepository userRepo;
 
     @Override
     public void crearSeccion(Seccion sec) {
@@ -39,20 +43,24 @@ public class SeccionService implements ISeccionService {
     }
 
     @Override
-    public void crearSeccionesDefault(Long personaId) {
-        Seccion about = new Seccion(personaId, "Sobre mí", "Ingresa aquí tu información personal...");
-        Seccion skills = new Seccion(personaId, "Habilidades", "Ingresa infromación de tus habilidades aquí...");
-        Seccion projects = new Seccion(personaId, "Proyectos", "Ingresa infromación de tus proyectos aquí...");
-        Seccion contact = new Seccion(personaId, "Contacto", "Ingresa información de contacto aquí..");
-
-        List<Seccion> listaSecciones = new ArrayList<Seccion>();
+    public void crearSeccionesDefault(Long persona_id) {
+        Seccion about = new Seccion("Sobre mí", "Ingresa aquí tu información personal...");
+        about.setUser(userRepo.findById(persona_id).orElse(null));
+        Seccion skills = new Seccion("Habilidades", "Ingresa infromación de tus habilidades aquí...");
+        skills.setUser(userRepo.findById(persona_id).orElse(null));
+        Seccion projects = new Seccion("Proyectos", "Ingresa infromación de tus proyectos aquí...");
+        projects.setUser(userRepo.findById(persona_id).orElse(null));
+        Seccion contact = new Seccion("Contacto", "Ingresa información de contacto aquí..");
+        contact.setUser(userRepo.findById(persona_id).orElse(null));
         
+        List<Seccion> listaSecciones = new ArrayList<Seccion>();
+
         listaSecciones.add(about);
         listaSecciones.add(skills);
         listaSecciones.add(projects);
         listaSecciones.add(contact);
-        
-        for(Seccion seccion : listaSecciones){
+
+        for (Seccion seccion : listaSecciones) {
             repo.save(seccion);
         }
 

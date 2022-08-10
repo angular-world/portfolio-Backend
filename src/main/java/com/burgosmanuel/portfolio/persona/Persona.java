@@ -1,9 +1,14 @@
 package com.burgosmanuel.portfolio.persona;
 
+import com.burgosmanuel.portfolio.security.entity.User;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.Getter;
@@ -16,7 +21,10 @@ public class Persona {
 
     @Id
     private Long id;
-    @NotNull
+    @OneToOne
+    @JoinColumn(name = "id")
+    @MapsId
+    private User user;
     @Size(min = 4, max = 60)
     private String nombre;
     @Size(max = 60)
@@ -31,8 +39,8 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(Long id,String nombre, String titulo, String linkedin_url, String github_url, String img_url, String banner_url, String about_url) {
-        this.id = id;
+    public Persona(User user,String nombre, String titulo, String linkedin_url, String github_url, String img_url, String banner_url, String about_url) {
+        this.user = user;
         this.nombre = nombre;
         this.titulo = titulo;
         this.linkedin_url = linkedin_url;
@@ -41,5 +49,4 @@ public class Persona {
         this.banner_url = banner_url;
         this.about_url = about_url;
     }
-
 }

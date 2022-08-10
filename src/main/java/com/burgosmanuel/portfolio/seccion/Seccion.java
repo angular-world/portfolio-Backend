@@ -1,7 +1,9 @@
 package com.burgosmanuel.portfolio.seccion;
 
+import com.burgosmanuel.portfolio.security.entity.User;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,7 +21,9 @@ public class Seccion {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long persona_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "persona_id")
+    private User user;
     @Size(max = 45)
     private String titulo;
     @Size(max = 500)
@@ -28,8 +32,7 @@ public class Seccion {
     public Seccion() {
     }
 
-    public Seccion(Long persona_id, String titulo, String descripcion) {
-        this.persona_id = persona_id;
+    public Seccion(String titulo, String descripcion) {
         this.titulo = titulo;
         this.descripcion = descripcion;
     }

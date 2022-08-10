@@ -1,9 +1,13 @@
 package com.burgosmanuel.portfolio.proyecto;
 
+import com.burgosmanuel.portfolio.security.entity.User;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +20,9 @@ public class Proyecto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long persona_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "persona_id")
+    private User user;
     @Size(max = 45)
     private String titulo;
     @Size(max = 500)
@@ -31,8 +37,7 @@ public class Proyecto {
     public Proyecto() {
     }
 
-    public Proyecto(Long persona_id, String titulo, String descripcion, String img_url, String demo_url, String repo_url) {
-        this.persona_id = persona_id;
+    public Proyecto(String titulo, String descripcion, String img_url, String demo_url, String repo_url) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.img_url = img_url;

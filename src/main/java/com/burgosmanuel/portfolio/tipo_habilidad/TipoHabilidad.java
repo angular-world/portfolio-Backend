@@ -7,14 +7,12 @@ import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+
 @Getter
 @Setter
 public class TipoHabilidad {
 
-    @Id
     private int id;
-    @Size (max = 45)
     private String nombre_tipo;
 
     public TipoHabilidad() {

@@ -1,5 +1,6 @@
 package com.burgosmanuel.portfolio.experiencia;
 
+import com.burgosmanuel.portfolio.security.entity.User;
 import java.util.List;
 
 public interface IExperienciaService {
