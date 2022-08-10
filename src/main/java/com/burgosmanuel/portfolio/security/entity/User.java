@@ -1,7 +1,15 @@
 package com.burgosmanuel.portfolio.security.entity;
 
+import com.burgosmanuel.portfolio.educacion.Educacion;
+import com.burgosmanuel.portfolio.experiencia.Experiencia;
+import com.burgosmanuel.portfolio.habilidad.Habilidad;
+import com.burgosmanuel.portfolio.persona.Persona;
+import com.burgosmanuel.portfolio.proyecto.Proyecto;
+import com.burgosmanuel.portfolio.seccion.Seccion;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,6 +18,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
@@ -39,9 +50,23 @@ public class User {
     @NotBlank
     @Size(max = 120)
     private String password;
+    @OneToOne(mappedBy = "user")
+    private Persona persona;
+    
+    
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+    @OneToMany(mappedBy = "id")
+    private List<Proyecto> proyectos;
+    @OneToMany(mappedBy = "id")
+    private List<Educacion> educacion;
+    @OneToMany(mappedBy = "id")
+    private List<Experiencia> experiencia;
+    @OneToMany(mappedBy = "id")
+    private List<Habilidad> habilidades;
+    @OneToMany(mappedBy = "id")
+    private List<Seccion> secciones;
 
     public User() {
     }
@@ -53,5 +78,3 @@ public class User {
     }
 
 }
-
-

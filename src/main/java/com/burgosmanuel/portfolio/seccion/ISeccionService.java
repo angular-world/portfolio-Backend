@@ -1,5 +1,6 @@
 package com.burgosmanuel.portfolio.seccion;
 
+import com.burgosmanuel.portfolio.security.entity.User;
 import java.util.List;
 
 
@@ -14,5 +15,5 @@ public interface ISeccionService {
     
     public Seccion buscarSeccion(Long id);
     
-    public void crearSeccionesDefault(Long personaId);
+    public void crearSeccionesDefault(Long persona_id);
 }

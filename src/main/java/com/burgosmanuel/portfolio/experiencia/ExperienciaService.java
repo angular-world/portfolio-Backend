@@ -1,5 +1,7 @@
 package com.burgosmanuel.portfolio.experiencia;
 
+import com.burgosmanuel.portfolio.security.entity.User;
+import com.burgosmanuel.portfolio.security.repository.UserRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +11,8 @@ public class ExperienciaService implements IExperienciaService {
 
     @Autowired
     ExperienciaRepository repo;
+    @Autowired
+    UserRepository userRepo;
 
     @Override
     public void agregarExperiencia(Experiencia exp) {
@@ -40,7 +44,8 @@ public class ExperienciaService implements IExperienciaService {
 
     @Override
     public void crearExperienciaDefault(Long persona_id) {
-        Experiencia expDefault = new Experiencia(persona_id, "Puesto", "Empresa", "Inicio - Fin", "Descripción...");
+        Experiencia expDefault = new Experiencia("Puesto", "Empresa", "Inicio - Fin", "Descripción...");
+        expDefault.setUser(userRepo.findById(persona_id).orElse(null));
         repo.save(expDefault);
     }
 

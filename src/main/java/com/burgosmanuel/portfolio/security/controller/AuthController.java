@@ -111,7 +111,7 @@ public class AuthController {
         user.setRoles(roles);
         userRepository.save(user);
         // Creamos una nueva entrada en "Persona" cuando nos registramos, a modo de placeholder. TODO: Enlazar las demas tablas a persona y modificar la ID en el front.
-        Persona nuevaPersona = new Persona(user.getId(), "Nombre y Apellido", "Titulo", "https://www.linkedin.com", "https://github.com", "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png", "https://cabaretfestival.es/wp-content/uploads/2020/07/Hero-Banner-Placeholder-Light-1024x480-1.png", "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png");
+        Persona nuevaPersona = new Persona(user, "Nombre y Apellido", "Titulo", "https://www.linkedin.com", "https://github.com", "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png", "https://cabaretfestival.es/wp-content/uploads/2020/07/Hero-Banner-Placeholder-Light-1024x480-1.png", "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png");
         personaService.crearPersona(nuevaPersona);
         seccionService.crearSeccionesDefault(user.getId());
         educacionService.crearEducacionDefault(user.getId());
