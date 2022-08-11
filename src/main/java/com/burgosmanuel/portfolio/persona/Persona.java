@@ -27,7 +27,7 @@ public class Persona {
     private User user;
     @Size(min = 4, max = 60)
     private String nombre;
-    @Size(max = 60)
+    @Size(max = 80)
     @NotNull
     private String titulo;
     private String linkedin_url;
