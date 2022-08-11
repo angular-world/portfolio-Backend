@@ -33,7 +33,7 @@ public class Habilidad {
     private String nombre;
     @Max(100)
     private int progreso;
-    @Size(max = 100)
+    @Size(max = 200)
     private String icono;
 
     public Habilidad() {

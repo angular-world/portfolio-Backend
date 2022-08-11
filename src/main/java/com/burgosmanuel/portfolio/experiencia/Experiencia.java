@@ -23,13 +23,13 @@ public class Experiencia {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "persona_id")
     private User user;
-    @Size(max = 45)
+    @Size(max = 60)
     private String puesto;
-    @Size(max = 45)
+    @Size(max = 60)
     private String empleador;
-    @Size(max = 45)
+    @Size(max = 60)
     private String fecha;
-    @Size(max = 300)
+    @Size(max = 500)
     private String descripcion;
 
     public Experiencia() {
