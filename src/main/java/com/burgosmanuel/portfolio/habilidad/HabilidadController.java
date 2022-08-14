@@ -23,23 +23,23 @@ public class HabilidadController {
 
     @PostMapping("/agregar")
     @PreAuthorize("hasRole('ADMIN')")
-    public void agregarHabilidad(@RequestBody Habilidad hab) {
+    public void agregarHabilidad(@RequestBody HabilidadDTO hab) {
         service.agregarHabilidad(hab);
     }
 
     @PutMapping("/editar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void editarHabilidad(@PathVariable Long id, @RequestBody Habilidad datosHabilidad) {
+    public void editarHabilidad(@PathVariable Long id, @RequestBody HabilidadDTO datosHabilidad) {
         service.editarHabilidad(id, datosHabilidad);
     }
 
     @GetMapping("/{id}")
-    public Habilidad buscarHabilidad(@PathVariable Long id) {
+    public HabilidadDTO buscarHabilidad(@PathVariable Long id) {
         return service.buscarHabilidad(id);
     }
 
     @GetMapping("/listar")
-    public List<Habilidad> listarHabilidades() {
+    public List<HabilidadDTO> listarHabilidades() {
         return service.listarHabilidades();
     }
 
