@@ -30,7 +30,7 @@ public class Educacion {
     private String titulo;
     @Size(max = 60)
     private String institucion;
-    @Size(max = 60)
+    @Size(max = 30)
     private String fecha;
     @Size(max = 500)
     private String descripcion;
