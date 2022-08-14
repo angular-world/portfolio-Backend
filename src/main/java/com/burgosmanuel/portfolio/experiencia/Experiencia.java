@@ -29,7 +29,7 @@ public class Experiencia {
     private String puesto;
     @Size(max = 60)
     private String empleador;
-    @Size(max = 60)
+    @Size(max = 30)
     private String fecha;
     @Size(max = 500)
     private String descripcion;
