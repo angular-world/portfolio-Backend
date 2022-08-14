@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @Data
 public class HabilidadDTO {
+
     private Long id;
     private Long persona_id;
     private String tipo;
@@ -28,6 +29,5 @@ public class HabilidadDTO {
         this.progreso = progreso;
         this.icono = icono;
     }
-    
-    
+
 }

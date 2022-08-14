@@ -4,13 +4,13 @@ import java.util.List;
 
 
 public interface IProyectoService {
-    public void agregarProyecto(Proyecto proj);
+    public void agregarProyecto(ProyectoDTO proj);
     
-    public void editarProyecto(Long id, Proyecto datosProyecto);
+    public void editarProyecto(Long id, ProyectoDTO datosProyecto);
     
-    public Proyecto buscarProyecto(Long id);
+    public ProyectoDTO buscarProyecto(Long id);
     
-    public List<Proyecto> listarProyectos();
+    public List<ProyectoDTO> listarProyectos();
     
     public void borrarProyecto(Long id);  
     

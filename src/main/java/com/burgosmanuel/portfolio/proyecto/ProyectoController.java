@@ -23,23 +23,23 @@ public class ProyectoController {
 
     @PostMapping("/agregar")
     @PreAuthorize("hasRole('ADMIN')")
-    public void agregarProyecto(@RequestBody Proyecto proj) {
+    public void agregarProyecto(@RequestBody ProyectoDTO proj) {
         service.agregarProyecto(proj);
     }
 
     @PutMapping("/editar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void editarProyecto(@PathVariable Long id, @RequestBody Proyecto datosProyecto) {
+    public void editarProyecto(@PathVariable Long id, @RequestBody ProyectoDTO datosProyecto) {
         service.editarProyecto(id, datosProyecto);
     }
 
     @GetMapping("/{id}")
-    public Proyecto buscarProyecto(@PathVariable Long id) {
+    public ProyectoDTO buscarProyecto(@PathVariable Long id) {
         return service.buscarProyecto(id);
     }
 
     @GetMapping("/listar")
-    public List<Proyecto> listarProyectos() {
+    public List<ProyectoDTO> listarProyectos() {
         return service.listarProyectos();
     }
 
