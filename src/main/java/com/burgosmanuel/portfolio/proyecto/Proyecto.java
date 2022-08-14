@@ -25,11 +25,15 @@ public class Proyecto {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "persona_id")
     private User user;
+    @Size (max = 100)
     private String titulo;
     @Size(max = 500)
     private String descripcion;
+    @Size(max = 500)
     private String img_url;
+    @Size(max = 500)
     private String demo_url;
+    @Size(max = 500)
     private String repo_url;
 
     public Proyecto() {

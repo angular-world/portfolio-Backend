@@ -31,10 +31,15 @@ public class Persona {
     @Size(max = 80)
     @NotNull
     private String titulo;
+    @Size(max = 500)
     private String linkedin_url;
+    @Size(max = 500)
     private String github_url;
+    @Size(max = 500)
     private String img_url;
+    @Size(max = 500)
     private String banner_url;
+    @Size(max = 500)
     private String about_url;
 
     public Persona() {
