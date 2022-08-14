@@ -5,15 +5,15 @@ import java.util.List;
 
 
 public interface ISeccionService {
-    public void crearSeccion(Seccion sec);
+    public void crearSeccion(SeccionDTO sec);
     
     public List<SeccionDTO> listarSecciones();
     
     public void eliminarSeccion(Long id);
     
-    public void editarSeccion(Long id, Seccion datosSeccion);
+    public void editarSeccion(Long id, SeccionDTO datosSeccion);
     
-    public Seccion buscarSeccion(Long id);
+    public SeccionDTO buscarSeccion(Long id);
     
     public void crearSeccionesDefault(Long persona_id);
 }
