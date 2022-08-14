@@ -54,8 +54,7 @@ public class EducacionService implements IEducacionService {
 
     @Override
     public void borrarEducacion(Long id) {
-        Educacion edu = repo.findById(id).orElse(null);
-        repo.delete(edu);
+        repo.deleteById(id);
     }
 
     @Override

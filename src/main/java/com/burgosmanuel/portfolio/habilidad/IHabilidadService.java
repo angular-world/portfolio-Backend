@@ -4,13 +4,13 @@ import java.util.List;
 
 public interface IHabilidadService {
 
-    public void agregarHabilidad(Habilidad hab);
+    public void agregarHabilidad(HabilidadDTO hab);
 
-    public void editarHabilidad(Long id, Habilidad datsoHabilidad);
+    public void editarHabilidad(Long id, HabilidadDTO datsoHabilidad);
 
-    public Habilidad buscarHabilidad(Long id);
+    public HabilidadDTO buscarHabilidad(Long id);
 
-    public List<Habilidad> listarHabilidades();
+    public List<HabilidadDTO> listarHabilidades();
 
     public void borrarHabilidad(Long id);
 

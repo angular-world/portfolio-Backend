@@ -40,7 +40,8 @@ public class Habilidad {
     public Habilidad() {
     }
 
-    public Habilidad(String tipo, String nivel, String nombre, int progreso, String icono) {
+    public Habilidad(User user, String tipo, String nivel, String nombre, int progreso, String icono) {
+        this.user = user;
         this.tipo = tipo;
         this.nivel = nivel;
         this.nombre = nombre;
