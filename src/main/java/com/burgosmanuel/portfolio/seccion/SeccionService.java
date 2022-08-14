@@ -21,8 +21,15 @@ public class SeccionService implements ISeccionService {
     }
 
     @Override
-    public List<Seccion> listarSecciones() {
-        return repo.findAll();
+    public List<SeccionDTO> listarSecciones() {
+        List<Seccion> listaSecciones = repo.findAll();
+        List<SeccionDTO> listaDTO = new ArrayList<SeccionDTO>();
+        for (int i = 0; i < listaSecciones.size(); i++) {
+            Seccion seccion = listaSecciones.get(i);
+            SeccionDTO seccionDTO = new SeccionDTO(seccion.getId(), seccion.getUser().getId(), seccion.getTitulo(), seccion.getDescripcion());
+            listaDTO.add(seccionDTO);
+        }
+        return listaDTO;
     }
 
     @Override
@@ -52,7 +59,7 @@ public class SeccionService implements ISeccionService {
         projects.setUser(userRepo.findById(persona_id).orElse(null));
         Seccion contact = new Seccion("Contacto", "Ingresa información de contacto aquí..");
         contact.setUser(userRepo.findById(persona_id).orElse(null));
-        
+
         List<Seccion> listaSecciones = new ArrayList<Seccion>();
 
         listaSecciones.add(about);

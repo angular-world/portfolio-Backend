@@ -1,7 +1,7 @@
 package com.burgosmanuel.portfolio.seccion;
 
 import com.burgosmanuel.portfolio.security.entity.User;
-import javax.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,6 +21,7 @@ public class Seccion {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "persona_id")
     private User user;
