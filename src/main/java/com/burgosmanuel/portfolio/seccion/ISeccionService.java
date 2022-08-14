@@ -7,7 +7,7 @@ import java.util.List;
 public interface ISeccionService {
     public void crearSeccion(Seccion sec);
     
-    public List<Seccion> listarSecciones();
+    public List<SeccionDTO> listarSecciones();
     
     public void eliminarSeccion(Long id);
     

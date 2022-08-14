@@ -1,10 +1,8 @@
 package com.burgosmanuel.portfolio.persona;
 
 import com.burgosmanuel.portfolio.security.entity.User;
-import javax.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
@@ -21,6 +19,7 @@ public class Persona {
 
     @Id
     private Long id;
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "id")
     @MapsId
@@ -39,7 +38,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(User user,String nombre, String titulo, String linkedin_url, String github_url, String img_url, String banner_url, String about_url) {
+    public Persona(User user, String nombre, String titulo, String linkedin_url, String github_url, String img_url, String banner_url, String about_url) {
         this.user = user;
         this.nombre = nombre;
         this.titulo = titulo;

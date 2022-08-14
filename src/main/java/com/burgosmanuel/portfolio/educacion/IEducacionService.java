@@ -1,6 +1,5 @@
 package com.burgosmanuel.portfolio.educacion;
 
-import com.burgosmanuel.portfolio.security.entity.User;
 import java.util.List;
 
 public interface IEducacionService {

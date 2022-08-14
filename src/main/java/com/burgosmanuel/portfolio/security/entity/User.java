@@ -6,10 +6,10 @@ import com.burgosmanuel.portfolio.habilidad.Habilidad;
 import com.burgosmanuel.portfolio.persona.Persona;
 import com.burgosmanuel.portfolio.proyecto.Proyecto;
 import com.burgosmanuel.portfolio.seccion.Seccion;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,7 +20,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
@@ -50,21 +49,27 @@ public class User {
     @NotBlank
     @Size(max = 120)
     private String password;
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private Persona persona;
-    
-    
+
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+    @JsonIgnore
     @OneToMany(mappedBy = "id")
     private List<Proyecto> proyectos;
+    @JsonIgnore
     @OneToMany(mappedBy = "id")
     private List<Educacion> educacion;
+    @JsonIgnore
     @OneToMany(mappedBy = "id")
     private List<Experiencia> experiencia;
+    @JsonIgnore
     @OneToMany(mappedBy = "id")
     private List<Habilidad> habilidades;
+    @JsonIgnore
     @OneToMany(mappedBy = "id")
     private List<Seccion> secciones;
 

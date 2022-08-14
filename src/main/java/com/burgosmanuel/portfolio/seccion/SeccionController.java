@@ -27,8 +27,9 @@ public class SeccionController {
         service.crearSeccion(sec);
     }
 
+
     @GetMapping("/listar")
-    public List<Seccion> listarSecciones() {
+    public List<SeccionDTO> listarSecciones() {
         return service.listarSecciones();
     }
 
