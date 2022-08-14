@@ -1,6 +1,7 @@
 package com.burgosmanuel.portfolio.educacion;
 
 import com.burgosmanuel.portfolio.security.entity.User;
+import com.burgosmanuel.portfolio.security.repository.UserRepository;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,12 +13,12 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Getter
 @Setter
 public class Educacion {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -37,7 +38,8 @@ public class Educacion {
     public Educacion() {
     }
 
-    public Educacion(String titulo, String institucion, String fecha, String descripcion) {
+    public Educacion(User user, String titulo, String institucion, String fecha, String descripcion) {
+        this.user = user;
         this.titulo = titulo;
         this.institucion = institucion;
         this.fecha = fecha;

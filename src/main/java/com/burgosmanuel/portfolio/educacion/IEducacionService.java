@@ -3,13 +3,13 @@ package com.burgosmanuel.portfolio.educacion;
 import java.util.List;
 
 public interface IEducacionService {
-    public void agregarEducacion(Educacion edu);
+    public void agregarEducacion(EducacionDTO edu);
     
-    public void editarEducacion(Long id, Educacion datosEducacion);
+    public void editarEducacion(Long id, EducacionDTO datosEducacion);
     
-    public List<Educacion> listarEducacion();
+    public List<EducacionDTO> listarEducacion();
     
-    public Educacion buscarEducacion(Long id);
+    public EducacionDTO buscarEducacion(Long id);
     
     public void borrarEducacion(Long id);
     

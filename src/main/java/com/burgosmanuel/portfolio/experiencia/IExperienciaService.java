@@ -5,13 +5,13 @@ import java.util.List;
 
 public interface IExperienciaService {
 
-    public void agregarExperiencia(Experiencia exp);
+    public void agregarExperiencia(ExperienciaDTO exp);
 
-    public void editarExperiencia(Long id, Experiencia datosExperiencia);
+    public void editarExperiencia(Long id, ExperienciaDTO datosExperiencia);
 
-    public List<Experiencia> listarExperiencia();
+    public List<ExperienciaDTO> listarExperiencia();
 
-    public Experiencia buscarExperiencia(Long id);
+    public ExperienciaDTO buscarExperiencia(Long id);
 
     public void borrarExperiencia(Long id);
 
