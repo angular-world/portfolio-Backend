@@ -27,7 +27,6 @@ public class PersonaService implements IPersonaService {
         Persona pers = buscarPersona(id);
         pers = datosPersona;
         pers.setUser(userRepo.findById(id).orElse(null));
-        System.out.println(pers.toString());
         repo.save(pers);
     }
 }

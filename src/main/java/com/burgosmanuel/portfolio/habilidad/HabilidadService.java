@@ -24,8 +24,8 @@ public class HabilidadService implements IHabilidadService {
 
     @Override
     public void editarHabilidad(Long id, HabilidadDTO datosHabilidad) {
-        Habilidad habilidadEditable = repo.findById(datosHabilidad.getPersona_id()).orElse(null);
-        habilidadEditable.setUser(userRepo.findById(datosHabilidad.getId()).orElse(null));
+        Habilidad habilidadEditable = repo.findById(id).orElse(null);
+        habilidadEditable.setUser(userRepo.findById(datosHabilidad.getPersona_id()).orElse(null));
         habilidadEditable.setTipo(datosHabilidad.getTipo());
         habilidadEditable.setNivel(datosHabilidad.getNivel());
         habilidadEditable.setNombre(datosHabilidad.getNombre());
