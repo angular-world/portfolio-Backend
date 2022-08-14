@@ -23,7 +23,7 @@ public class SeccionController {
 
     @PostMapping("/crear")
     @PreAuthorize("hasRole('ADMIN')")
-    public void crearSeccion(@RequestBody Seccion sec) {
+    public void crearSeccion(@RequestBody SeccionDTO sec) {
         service.crearSeccion(sec);
     }
 
@@ -34,13 +34,13 @@ public class SeccionController {
     }
 
     @GetMapping("/{id}")
-    public Seccion buscarSeccion(@PathVariable Long id) {
+    public SeccionDTO buscarSeccion(@PathVariable Long id) {
         return service.buscarSeccion(id);
     }
 
     @PutMapping("/editar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void editarSeccion(@PathVariable Long id, @RequestBody Seccion sec) {
+    public void editarSeccion(@PathVariable Long id, @RequestBody SeccionDTO sec) {
         service.editarSeccion(id, sec);
     }
 

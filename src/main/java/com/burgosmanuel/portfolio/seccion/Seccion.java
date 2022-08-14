@@ -10,12 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@Data
 public class Seccion {
 
     @Id
@@ -33,7 +35,8 @@ public class Seccion {
     public Seccion() {
     }
 
-    public Seccion(String titulo, String descripcion) {
+    public Seccion(User user, String titulo, String descripcion) {
+        this.user = user;
         this.titulo = titulo;
         this.descripcion = descripcion;
     }

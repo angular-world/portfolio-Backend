@@ -4,6 +4,7 @@ import com.burgosmanuel.portfolio.security.entity.User;
 import com.burgosmanuel.portfolio.security.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +17,10 @@ public class SeccionService implements ISeccionService {
     UserRepository userRepo;
 
     @Override
-    public void crearSeccion(Seccion sec) {
-        repo.save(sec);
+    public void crearSeccion(SeccionDTO sec) {
+        User seccionUser = userRepo.findById(sec.getPersona_id()).orElse(null);
+        Seccion nuevaSeccion = new Seccion(seccionUser, sec.getTitulo(), sec.getDescripcion());
+        repo.save(nuevaSeccion);
     }
 
     @Override
@@ -33,15 +36,20 @@ public class SeccionService implements ISeccionService {
     }
 
     @Override
-    public Seccion buscarSeccion(Long id) {
-        return repo.findById(id).orElse(null);
+    public SeccionDTO buscarSeccion(Long id) {
+        Seccion getSeccion = repo.findById(id).orElse(null);
+        SeccionDTO seccionDTO = new SeccionDTO(getSeccion.getId(), getSeccion.getUser().getId(), getSeccion.getTitulo(), getSeccion.getDescripcion());
+        return seccionDTO;
     }
 
     @Override
-    public void editarSeccion(Long id, Seccion datosSeccion) {
-        Seccion sec = buscarSeccion(id);
-        sec = datosSeccion;
-        repo.save(sec);
+    public void editarSeccion(Long id, SeccionDTO datosSeccion) {
+        Seccion editSeccion = repo.findById(id).orElse(null);
+        editSeccion.setTitulo(datosSeccion.getTitulo());
+        editSeccion.setDescripcion(datosSeccion.getDescripcion());
+        System.out.println(datosSeccion.toString());
+        System.out.println(editSeccion.toString());
+        repo.save(editSeccion);
     }
 
     @Override
@@ -51,13 +59,14 @@ public class SeccionService implements ISeccionService {
 
     @Override
     public void crearSeccionesDefault(Long persona_id) {
-        Seccion about = new Seccion("Sobre mí", "Ingresa aquí tu información personal...");
+        User userDefault = userRepo.findById(persona_id).orElse(null);
+        Seccion about = new Seccion(userDefault, "Sobre mí", "Ingresa aquí tu información personal...");
         about.setUser(userRepo.findById(persona_id).orElse(null));
-        Seccion skills = new Seccion("Habilidades", "Ingresa infromación de tus habilidades aquí...");
+        Seccion skills = new Seccion(userDefault, "Habilidades", "Ingresa infromación de tus habilidades aquí...");
         skills.setUser(userRepo.findById(persona_id).orElse(null));
-        Seccion projects = new Seccion("Proyectos", "Ingresa infromación de tus proyectos aquí...");
+        Seccion projects = new Seccion(userDefault, "Proyectos", "Ingresa infromación de tus proyectos aquí...");
         projects.setUser(userRepo.findById(persona_id).orElse(null));
-        Seccion contact = new Seccion("Contacto", "Ingresa información de contacto aquí..");
+        Seccion contact = new Seccion(userDefault, "Contacto", "Ingresa información de contacto aquí..");
         contact.setUser(userRepo.findById(persona_id).orElse(null));
 
         List<Seccion> listaSecciones = new ArrayList<Seccion>();
