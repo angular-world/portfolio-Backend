@@ -23,23 +23,23 @@ public class EducacionController {
 
     @PostMapping("/agregar")
     @PreAuthorize("hasRole('ADMIN')")
-    public void agregarEducacion(@RequestBody Educacion edu) {
+    public void agregarEducacion(@RequestBody EducacionDTO edu) {
         service.agregarEducacion(edu);
     }
 
     @PutMapping("/editar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void editarEducacion(@PathVariable Long id, @RequestBody Educacion datosEducacion) {
+    public void editarEducacion(@PathVariable Long id, @RequestBody EducacionDTO datosEducacion) {
         service.editarEducacion(id, datosEducacion);
     }
 
     @GetMapping("/listar")
-    public List<Educacion> listarEducacion() {
+    public List<EducacionDTO> listarEducacion() {
         return service.listarEducacion();
     }
 
     @GetMapping("/{id}")
-    public Educacion buscarEducacion(@PathVariable Long id) {
+    public EducacionDTO buscarEducacion(@PathVariable Long id) {
         return service.buscarEducacion(id);
     }
 

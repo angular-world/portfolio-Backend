@@ -61,13 +61,9 @@ public class SeccionService implements ISeccionService {
     public void crearSeccionesDefault(Long persona_id) {
         User userDefault = userRepo.findById(persona_id).orElse(null);
         Seccion about = new Seccion(userDefault, "Sobre mí", "Ingresa aquí tu información personal...");
-        about.setUser(userRepo.findById(persona_id).orElse(null));
         Seccion skills = new Seccion(userDefault, "Habilidades", "Ingresa infromación de tus habilidades aquí...");
-        skills.setUser(userRepo.findById(persona_id).orElse(null));
         Seccion projects = new Seccion(userDefault, "Proyectos", "Ingresa infromación de tus proyectos aquí...");
-        projects.setUser(userRepo.findById(persona_id).orElse(null));
         Seccion contact = new Seccion(userDefault, "Contacto", "Ingresa información de contacto aquí..");
-        contact.setUser(userRepo.findById(persona_id).orElse(null));
 
         List<Seccion> listaSecciones = new ArrayList<Seccion>();
 

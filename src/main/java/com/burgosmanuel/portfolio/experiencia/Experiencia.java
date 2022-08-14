@@ -37,7 +37,8 @@ public class Experiencia {
     public Experiencia() {
     }
 
-    public Experiencia(String puesto, String empleador, String fecha, String descripcion) {
+    public Experiencia(User user,String puesto, String empleador, String fecha, String descripcion) {
+        this.user = user;
         this.puesto = puesto;
         this.empleador = empleador;
         this.fecha = fecha;

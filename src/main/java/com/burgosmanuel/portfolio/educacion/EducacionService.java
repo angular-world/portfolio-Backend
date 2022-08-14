@@ -1,8 +1,9 @@
 package com.burgosmanuel.portfolio.educacion;
 
+import com.burgosmanuel.portfolio.security.entity.User;
 import com.burgosmanuel.portfolio.security.repository.UserRepository;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,39 +16,52 @@ public class EducacionService implements IEducacionService {
     UserRepository userRepo;
 
     @Override
-    public void agregarEducacion(Educacion edu) {
-        repo.save(edu);
+    public void agregarEducacion(EducacionDTO edu) {
+        User user = userRepo.findById(edu.getPersona_id()).orElse(null);
+        Educacion nuevaEdu = new Educacion(user, edu.getTitulo(), edu.getInstitucion(), edu.getFecha(), edu.getDescripcion());
+        repo.save(nuevaEdu);
     }
 
     @Override
-    public void editarEducacion(Long id, Educacion datosEducacion) {
-        Educacion edu = buscarEducacion(id);
-        edu = datosEducacion;
-        repo.save(edu);
+    public void editarEducacion(Long id, EducacionDTO datosEducacion) {
+        Educacion eduEditable = repo.findById(id).orElse(null);
+        eduEditable.setUser(userRepo.findById(datosEducacion.getPersona_id()).orElse(null));
+        eduEditable.setTitulo(datosEducacion.getTitulo());
+        eduEditable.setInstitucion(datosEducacion.getInstitucion());
+        eduEditable.setFecha(datosEducacion.getFecha());
+        eduEditable.setDescripcion(datosEducacion.getDescripcion());
+        repo.save(eduEditable);
     }
 
     @Override
-    public List<Educacion> listarEducacion() {
-        return repo.findAll();
+    public List<EducacionDTO> listarEducacion() {
+        List<Educacion> listaEdu = repo.findAll();
+        List<EducacionDTO> listaDTO = new ArrayList<EducacionDTO>();
+        for (int i = 0; i < listaEdu.size(); i++) {
+            Educacion edu = listaEdu.get(i);
+            EducacionDTO eduDTO = new EducacionDTO(edu.getId(), edu.getUser().getId(), edu.getTitulo(), edu.getInstitucion(), edu.getFecha(), edu.getDescripcion());
+            listaDTO.add(eduDTO);
+        }
+        return listaDTO;
     }
 
     @Override
-    public Educacion buscarEducacion(Long id) {
-        return repo.findById(id).orElse(null);
+    public EducacionDTO buscarEducacion(Long id) {
+        Educacion edu = repo.findById(id).orElse(null);
+        EducacionDTO eduDTO = new EducacionDTO(edu.getId(), edu.getUser().getId(), edu.getTitulo(), edu.getInstitucion(), edu.getFecha(), edu.getDescripcion());
+        return eduDTO;
     }
 
     @Override
     public void borrarEducacion(Long id) {
-        Educacion edu = buscarEducacion(id);
+        Educacion edu = repo.findById(id).orElse(null);
         repo.delete(edu);
     }
 
     @Override
     public void crearEducacionDefault(Long persona_id) {
-        Educacion eduDefault = new Educacion("Título", "Institución", "Inicio - Fin", "Descripción...");
-        eduDefault.setUser(userRepo.findById(persona_id).orElse(null));
+        User userDefault = userRepo.findById(persona_id).orElse(null);
+        Educacion eduDefault = new Educacion(userDefault, "Título", "Institución", "Inicio - Fin", "Descripción...");
         repo.save(eduDefault);
     }
-;
-
 }

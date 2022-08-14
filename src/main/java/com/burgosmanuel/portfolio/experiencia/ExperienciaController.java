@@ -23,23 +23,23 @@ public class ExperienciaController {
 
     @PostMapping("/agregar")
     @PreAuthorize("hasRole('ADMIN')")
-    public void agregarExperiencia(@RequestBody Experiencia exp) {
+    public void agregarExperiencia(@RequestBody ExperienciaDTO exp) {
         service.agregarExperiencia(exp);
     }
 
     @PutMapping("/editar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void editarExperiencia(@PathVariable Long id, @RequestBody Experiencia datosExperiencia) {
+    public void editarExperiencia(@PathVariable Long id, @RequestBody ExperienciaDTO datosExperiencia) {
         service.editarExperiencia(id, datosExperiencia);
     }
 
     @GetMapping("/listar")
-    public List<Experiencia> listarExperiencia() {
+    public List<ExperienciaDTO> listarExperiencia() {
         return service.listarExperiencia();
     }
 
     @GetMapping("/{id}")
-    public Experiencia buscarExperiencia(@PathVariable Long id) {
+    public ExperienciaDTO buscarExperiencia(@PathVariable Long id) {
         return service.buscarExperiencia(id);
     }
 
