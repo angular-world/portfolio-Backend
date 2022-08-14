@@ -1,5 +1,6 @@
 package com.burgosmanuel.portfolio.persona;
 
+import com.burgosmanuel.portfolio.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +9,8 @@ public class PersonaService implements IPersonaService {
 
     @Autowired
     PersonaRepository repo;
+    @Autowired
+    UserRepository userRepo;
 
     @Override
     public Persona buscarPersona(Long id) {
@@ -23,6 +26,8 @@ public class PersonaService implements IPersonaService {
     public void editarPersona(Long id, Persona datosPersona) {
         Persona pers = buscarPersona(id);
         pers = datosPersona;
+        pers.setUser(userRepo.findById(id).orElse(null));
+        System.out.println(pers.toString());
         repo.save(pers);
     }
 }
