@@ -11,13 +11,15 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AuthEntryPointJwt implements AuthenticationEntryPoint{
+public class AuthEntryPointJwt implements AuthenticationEntryPoint {
+
     private static final Logger logger = LoggerFactory.getLogger(AuthEntryPointJwt.class);
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         logger.error("Usuario no autorizado: {}", authException.getMessage());
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error: No Autorizado.");
+
     }
-    
+
 }
