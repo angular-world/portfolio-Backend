@@ -21,21 +21,21 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 @RestController
 @RequestMapping("/educacion")
-@Tag(name = "Educación", description = "Se encarga de las operaciones a realizar en los elementos de Educación.")
+@Tag(name = "Educacion", description = "Se encarga de las operaciones a realizar en los elementos de Educacion.")
 public class EducacionController {
 
     @Autowired
     EducacionService service;
 
-    //Anotaciones para la documentación
-    @Operation(summary = "Agregar nueva Educación", description = "Sumamos una nueva Educación a la BD para el usuario indicado.")
+    //Anotaciones para la documentacion
+    @Operation(summary = "Agregar nueva Educacion", description = "Sumamos una nueva Educacion a la BD para el usuario indicado.")
     @SecurityRequirement(name = "Authorization")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Recurso agregado correctamente."),
         @ApiResponse(responseCode = "400", description = "Hubo un problema en la solicitud."),
-        @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesión."),
+        @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesion."),
         @ApiResponse(responseCode = "403", description = "No se puede acceder a este recurso."),
-        @ApiResponse(responseCode = "404", description = "No se encontró el recurso especificado.")})
+        @ApiResponse(responseCode = "404", description = "No se encontro el recurso especificado.")})
     // Anotaciones para el Controller
     @PostMapping("/agregar")
     @PreAuthorize("hasRole('ADMIN')")
@@ -43,15 +43,15 @@ public class EducacionController {
         service.agregarEducacion(edu);
     }
 
-    //Anotaciones para la documentación
-    @Operation(summary = "Editar Educación", description = "Editamos información de la Educación indicada.")
+    //Anotaciones para la documentacion
+    @Operation(summary = "Editar Educacion", description = "Editamos informacion de la Educacion indicada.")
     @SecurityRequirement(name = "Authorization")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Recurso actualizado correctamente."),
         @ApiResponse(responseCode = "400", description = "Hubo un problema en la solicitud."),
-        @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesión."),
+        @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesion."),
         @ApiResponse(responseCode = "403", description = "No se puede acceder a este recurso."),
-        @ApiResponse(responseCode = "404", description = "No se encontró el recurso especificado.")})
+        @ApiResponse(responseCode = "404", description = "No se encontro el recurso especificado.")})
     // Anotaciones para el Controller
 
     @PutMapping("/editar/{id}")
@@ -60,8 +60,8 @@ public class EducacionController {
         service.editarEducacion(id, datosEducacion);
     }
 
-    //Anotaciones para la documentación
-    @Operation(summary = "Listar Educación", description = "Obtenemos una lista de toda la Educación en la BD, posteriormente se filtran en Frontend.")
+    //Anotaciones para la documentacion
+    @Operation(summary = "Listar Educacion", description = "Obtenemos una lista de toda la Educacion en la BD, posteriormente se filtran en Frontend.")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Recursos listados correctamente.")})
     // Anotaciones para el Controller
@@ -71,15 +71,15 @@ public class EducacionController {
         return service.listarEducacion();
     }
 
-    //Anotaciones para la documentación
-    @Operation(summary = "Buscar Educación", description = "Obtenemos la información de una Educación específica a través de la ID.")
+    //Anotaciones para la documentacion
+    @Operation(summary = "Buscar Educacion", description = "Obtenemos la informacion de una Educacion especifica a traves de la ID.")
     @SecurityRequirement(name = "Authorization")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Recurso listado correctamente."),
         @ApiResponse(responseCode = "400", description = "Hubo un problema en la solicitud."),
-        @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesión."),
+        @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesion."),
         @ApiResponse(responseCode = "403", description = "No se puede acceder a este recurso."),
-        @ApiResponse(responseCode = "404", description = "No se encontró el recurso especificado.")})
+        @ApiResponse(responseCode = "404", description = "No se encontro el recurso especificado.")})
     // Anotaciones para el Controller
 
     @GetMapping("/{id}")
@@ -87,15 +87,15 @@ public class EducacionController {
         return service.buscarEducacion(id);
     }
 
-    //Anotaciones para la documentación
-    @Operation(summary = "Eliminar Educación", description = "Eliminamos una Educación según la ID.")
+    //Anotaciones para la documentacion
+    @Operation(summary = "Eliminar Educacion", description = "Eliminamos una Educacion segun la ID.")
     @SecurityRequirement(name = "Authorization")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Recurso eliminado correctamente."),
         @ApiResponse(responseCode = "400", description = "Hubo un problema en la solicitud."),
-        @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesión."),
+        @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesion."),
         @ApiResponse(responseCode = "403", description = "No se puede acceder a este recurso."),
-        @ApiResponse(responseCode = "404", description = "No se encontró el recurso especificado.")})
+        @ApiResponse(responseCode = "404", description = "No se encontro el recurso especificado.")})
     // Anotaciones para el Controller
     @DeleteMapping("/eliminar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
