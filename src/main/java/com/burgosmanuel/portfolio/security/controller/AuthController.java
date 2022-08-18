@@ -18,6 +18,11 @@ import com.burgosmanuel.portfolio.security.payload.RegisterRequest;
 import com.burgosmanuel.portfolio.security.repository.RoleRepository;
 import com.burgosmanuel.portfolio.security.repository.UserRepository;
 import com.burgosmanuel.portfolio.security.service.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -39,6 +44,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/auth")
+@Tag(name = "Autenticación", description = "Se encarga del Registro e Ingreso de usuarios.")
 public class AuthController {
 
     @Autowired
@@ -64,6 +70,13 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 
+    //Anotaciones para la documentación
+    @Operation(summary = "Ingresar a la cuenta", description = "Se encarga de validar los datos ingresados y generar el JWT que será usado por el Frontend.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "El usuario ingresó con éxito."),
+        @ApiResponse(responseCode = "401", description = "Hubo un problema en la solicitud, revise los datos ingresados."),
+        @ApiResponse(responseCode = "404", description = "No se encontró el recurso especificado.")})
+    // Anotaciones para el Controller
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         try {
@@ -79,6 +92,13 @@ public class AuthController {
         }
     }
 
+    //Anotaciones para la documentación
+    @Operation(summary = "Registrar un nuevo usuario", description = "Se encarga de crear un nuevo usuario en la DB, así como todas los campos por defecto.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Usuario registrado con éxito."),
+        @ApiResponse(responseCode = "401", description = "Hubo un problema en la solicitud."),
+        @ApiResponse(responseCode = "404", description = "No se encontró el recurso especificado.")})
+    // Anotaciones para el Controller
     @PostMapping("/registro")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequest registerRequest) {
         if (userRepository.existsByUsername(registerRequest.getUsername())) {
