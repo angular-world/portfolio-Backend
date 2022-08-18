@@ -21,14 +21,14 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 @RestController
 @RequestMapping("/educacion")
-@Tag(name = "Educacion", description = "Se encarga de las operaciones a realizar en los elementos de Educacion.")
+@Tag(name = "Educación", description = "Se encarga de las operaciones a realizar en los elementos de Educación.")
 public class EducacionController {
 
     @Autowired
     EducacionService service;
 
     //Anotaciones para la documentacion
-    @Operation(summary = "Agregar nueva Educacion", description = "Sumamos una nueva Educacion a la BD para el usuario indicado.")
+    @Operation(summary = "Agregar nueva Educación", description = "Sumamos una nueva Educación a la BD para el usuario indicado.")
     @SecurityRequirement(name = "Authorization")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Recurso agregado correctamente."),
@@ -44,7 +44,7 @@ public class EducacionController {
     }
 
     //Anotaciones para la documentacion
-    @Operation(summary = "Editar Educacion", description = "Editamos informacion de la Educacion indicada.")
+    @Operation(summary = "Editar Educación", description = "Editamos informacion de la Educación indicada.")
     @SecurityRequirement(name = "Authorization")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Recurso actualizado correctamente."),
@@ -61,7 +61,7 @@ public class EducacionController {
     }
 
     //Anotaciones para la documentacion
-    @Operation(summary = "Listar Educacion", description = "Obtenemos una lista de toda la Educacion en la BD, posteriormente se filtran en Frontend.")
+    @Operation(summary = "Listar Educación", description = "Obtenemos una lista de toda la Educación en la BD, posteriormente se filtran en Frontend.")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Recursos listados correctamente.")})
     // Anotaciones para el Controller
@@ -72,7 +72,7 @@ public class EducacionController {
     }
 
     //Anotaciones para la documentacion
-    @Operation(summary = "Buscar Educacion", description = "Obtenemos la informacion de una Educacion especifica a traves de la ID.")
+    @Operation(summary = "Buscar Educación", description = "Obtenemos la informacion de una Educación especifica a traves de la ID.")
     @SecurityRequirement(name = "Authorization")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Recurso listado correctamente."),
@@ -88,7 +88,7 @@ public class EducacionController {
     }
 
     //Anotaciones para la documentacion
-    @Operation(summary = "Eliminar Educacion", description = "Eliminamos una Educacion segun la ID.")
+    @Operation(summary = "Eliminar Educación", description = "Eliminamos una Educación segun la ID.")
     @SecurityRequirement(name = "Authorization")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Recurso eliminado correctamente."),
