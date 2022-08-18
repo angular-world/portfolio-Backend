@@ -25,7 +25,7 @@ public class PersonaController {
     @Autowired
     PersonaService service;
 
-        //Anotaciones para la documentación
+    //Anotaciones para la documentación
     @Operation(summary = "Buscar Persona", description = "Obtenemos los Datos Personales del usuario indicado (ID).")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Recurso listado correctamente."),
@@ -39,14 +39,14 @@ public class PersonaController {
         return service.buscarPersona(id);
     }
 
+    // Ocultamos en la documentación ya que sólo se usa al registrar un usuario.
     @Operation(hidden = true)
     @PostMapping("/crear")
-        @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public void crearPersona(@RequestBody Persona pers) {
         service.crearPersona(pers);
     }
 
-    
     //Anotaciones para la documentación
     @Operation(summary = "Editar Persona", description = "Editamos la información personal del usuario.")
     @SecurityRequirement(name = "Authorization")

@@ -40,11 +40,7 @@ public class SeccionController {
     // Anotaciones para documentar la API
     @Operation(summary = "Listar Secciones", description = "Obtenemos un listado de todas las Secciones disponibles, posteriormente son filtradas en el Frontend.")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Recursos listados correctamente."),
-        @ApiResponse(responseCode = "400", description = "Hubo un problema en la solicitud."),
-        @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesión."),
-        @ApiResponse(responseCode = "403", description = "No se puede acceder a este recurso."),
-        @ApiResponse(responseCode = "404", description = "No se encontró el recurso especificado.")})
+        @ApiResponse(responseCode = "200", description = "Recursos listados correctamente.")})
     @GetMapping("/listar")
     public List<SeccionDTO> listarSecciones() {
         return service.listarSecciones();

@@ -31,7 +31,7 @@ public class HabilidadController {
     @Operation(summary = "Agregar una nueva Habilidad", description = "Sumamos una nueva Habilidad al usuario indicado.")
     @SecurityRequirement(name = "Authorization")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Recurso actualizado correctamente."),
+        @ApiResponse(responseCode = "200", description = "Recurso agregado correctamente."),
         @ApiResponse(responseCode = "400", description = "Hubo un problema en la solicitud."),
         @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesión."),
         @ApiResponse(responseCode = "403", description = "No se puede acceder a este recurso."),
@@ -77,11 +77,7 @@ public class HabilidadController {
     //Anotaciones para la documentación
     @Operation(summary = "Listar Habilidades", description = "Obtenemos una lista de todas las Habilidades en la BD, posteriormente se filtran en Frontend.")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Recursos listados correctamente."),
-        @ApiResponse(responseCode = "400", description = "Hubo un problema en la solicitud."),
-        @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesión."),
-        @ApiResponse(responseCode = "403", description = "No se puede acceder a este recurso."),
-        @ApiResponse(responseCode = "404", description = "No se encontró el recurso especificado.")})
+        @ApiResponse(responseCode = "200", description = "Recursos listados correctamente.")})
     // Anotaciones para el Controller
     @GetMapping("/listar")
     public List<HabilidadDTO> listarHabilidades() {

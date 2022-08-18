@@ -28,10 +28,10 @@ public class ProyectoController {
     ProyectoService service;
 
     //Anotaciones para la documentación
-    @Operation(summary = "Agregar un nuevo Proyecto", description = "Sumamos un nuevo proyecto a la BD para el usuario indicado.")
+    @Operation(summary = "Agregar un nuevo Proyecto", description = "Sumamos un nuevo Proyecto a la BD para el usuario indicado.")
     @SecurityRequirement(name = "Authorization")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Recurso actualizado correctamente."),
+        @ApiResponse(responseCode = "200", description = "Recurso agregado correctamente."),
         @ApiResponse(responseCode = "400", description = "Hubo un problema en la solicitud."),
         @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesión."),
         @ApiResponse(responseCode = "403", description = "No se puede acceder a este recurso."),
@@ -44,7 +44,7 @@ public class ProyectoController {
     }
 
     //Anotaciones para la documentación
-    @Operation(summary = "Editar Proyecto", description = "Editamos la información del proyecto indicado.")
+    @Operation(summary = "Editar Proyecto", description = "Editamos la información del Proyecto indicado.")
     @SecurityRequirement(name = "Authorization")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Recurso actualizado correctamente."),
@@ -77,11 +77,7 @@ public class ProyectoController {
     //Anotaciones para la documentación
     @Operation(summary = "Listar Proyectos", description = "Obtenemos una lista de todos los Proyectos en la BD, posteriormente se filtran en Frontend.")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Recursos listados correctamente."),
-        @ApiResponse(responseCode = "400", description = "Hubo un problema en la solicitud."),
-        @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesión."),
-        @ApiResponse(responseCode = "403", description = "No se puede acceder a este recurso."),
-        @ApiResponse(responseCode = "404", description = "No se encontró el recurso especificado.")})
+        @ApiResponse(responseCode = "200", description = "Recursos listados correctamente.")})
     // Anotaciones para el Controller
     @GetMapping("/listar")
     public List<ProyectoDTO> listarProyectos() {
