@@ -28,7 +28,7 @@ public class PersonaController {
         //Anotaciones para la documentación
     @Operation(summary = "Buscar Persona", description = "Obtenemos los Datos Personales del usuario indicado (ID).")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Recursos listados correctamente."),
+        @ApiResponse(responseCode = "200", description = "Recurso listado correctamente."),
         @ApiResponse(responseCode = "400", description = "Hubo un problema en la solicitud."),
         @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesión."),
         @ApiResponse(responseCode = "403", description = "No se puede acceder a este recurso."),
