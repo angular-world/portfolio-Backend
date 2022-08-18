@@ -56,7 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/personas/**", "/secciones/listar","/secciones/listarDTO", "/proyectos/listar", "/educacion/listar", "/experiencia/listar", "/habilidades/listar").permitAll()
+                .antMatchers("/personas/{id}", "/secciones/listar","/secciones/listarDTO", "/proyectos/listar", "/educacion/listar", "/experiencia/listar", "/habilidades/listar", "/api-docs/**", "/swagger-resources/**", "/configuration/ui", "/swagger-ui.html", "/swagger-ui/**").permitAll()
                 .anyRequest().authenticated();
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
