@@ -38,27 +38,42 @@ public class SeccionController {
     }
 
     // Anotaciones para documentar la API
-    @Operation(summary = "Listar Secciones", description = "Éste endpoint retorna un listado de todas las secciones disponibles, posteriormente son filtradas en el Frontend.", parameters = {
-        @Parameter(name = "token", in = ParameterIn.HEADER, required = true)})
+    @Operation(summary = "Listar Secciones", description = "Obtenemos un listado de todas las Secciones disponibles, posteriormente son filtradas en el Frontend.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Recursos listados correctamente."),
+        @ApiResponse(responseCode = "400", description = "Hubo un problema en la solicitud."),
+        @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesión."),
+        @ApiResponse(responseCode = "403", description = "No se puede acceder a este recurso."),
+        @ApiResponse(responseCode = "404", description = "No se encontró el recurso especificado.")})
     @GetMapping("/listar")
     public List<SeccionDTO> listarSecciones() {
         return service.listarSecciones();
     }
 
-    @Operation(hidden = true)
+    // Anotaciones para documentar la API
+    @Operation(summary = "Buscar Seccion", description = "Obtenemos la información de una Sección específico a través de la ID.")
+    @SecurityRequirement(name = "Authorization")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Recurso listado correctamente."),
+        @ApiResponse(responseCode = "400", description = "Hubo un problema en la solicitud."),
+        @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesión."),
+        @ApiResponse(responseCode = "403", description = "No se puede acceder a este recurso."),
+        @ApiResponse(responseCode = "404", description = "No se encontró el recurso especificado.")})
+    // Anotaciones para el Controller
+
     @GetMapping("/{id}")
     public SeccionDTO buscarSeccion(@PathVariable Long id) {
         return service.buscarSeccion(id);
     }
 
     // Anotaciones para documentar la API
-    @Operation(summary = "Editar Seccion", description = "Este endpoint es utilizado para editar los datos de una Sección en específico.")
+    @Operation(summary = "Editar Seccion", description = "Editamos los datos de una Sección en específico.")
     @SecurityRequirement(name = "Authorization")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Recurso actualizado correctamente."),
         @ApiResponse(responseCode = "400", description = "Hubo un problema en la solicitud."),
         @ApiResponse(responseCode = "401", description = "Usuario no autorizado, inicie sesión."),
-        @ApiResponse(responseCode = "403", description = "No se pued acceder a este recurso."),
+        @ApiResponse(responseCode = "403", description = "No se puede acceder a este recurso."),
         @ApiResponse(responseCode = "404", description = "No se encontró el recurso especificado.")})
     // Anotaciones para el Controller
     @PutMapping("/editar/{id}")
