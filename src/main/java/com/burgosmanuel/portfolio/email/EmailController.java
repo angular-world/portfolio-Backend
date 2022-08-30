@@ -16,6 +16,6 @@ public class EmailController {
     
     @PostMapping("/api/enviar")
     public void sendEmail(@RequestBody Email email) throws MessagingException, UnsupportedEncodingException {
-        mailService.sendEmail(email.getReceptor(), email.getNombre(), email.getMensaje(), email.getEmisor());
+        mailService.sendEmail(email.getReceptor_id(), email.getNombre(), email.getMensaje(), email.getEmisor());
     }
 }

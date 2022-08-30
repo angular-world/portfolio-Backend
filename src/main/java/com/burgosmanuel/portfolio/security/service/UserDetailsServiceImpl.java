@@ -21,5 +21,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userRepo.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("No existe ningún usuario con el nombre: " + username));
         return UserDetailsImpl.build(user);
     }
+    
+    public String getUserEmail(Long id){
+     User user = userRepo.findById(id).orElseThrow(() -> new UsernameNotFoundException("No se encontró el usuario con la ID especificada."));
+     return user.getEmail();
+    }
 
 }

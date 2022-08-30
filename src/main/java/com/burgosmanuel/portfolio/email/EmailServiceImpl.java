@@ -1,5 +1,6 @@
 package com.burgosmanuel.portfolio.email;
 
+import com.burgosmanuel.portfolio.security.service.UserDetailsServiceImpl;
 import java.io.UnsupportedEncodingException;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -13,11 +14,16 @@ public class EmailServiceImpl {
 
     @Autowired
     private JavaMailSender emailSender;
+    @Autowired
+    private UserDetailsServiceImpl userServ;
 
-    public void sendEmail(String receptor, String nombre, String mensaje, String emisor) throws MessagingException, UnsupportedEncodingException {
+    public void sendEmail(Long receptor_id, String nombre, String mensaje, String emisor) throws MessagingException, UnsupportedEncodingException {
         // Creamos el mensaje a enviar y el helper
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
+        
+        // Obtenemos el email receptor a partir del id
+        String receptor = userServ.getUserEmail(receptor_id);
 
         // Utilizamos etiquetas HTML para el mensaje y bindeamos los datos
         String mailContent = "<h3 style=\"text-align: center; font-weight: normal;\">¡<strong>"+ nombre +"</strong> ha dejado un mensaje en tu portfolio!</h3>"

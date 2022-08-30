@@ -11,16 +11,16 @@ public class Email {
 
     private String nombre;
     private String emisor;
-    private String receptor;
+    private Long receptor_id;
     private String mensaje;
 
     public Email() {
     }
 
-    public Email(String nombre, String emisor, String receptor, String mensaje) {
+    public Email(String nombre, String emisor, Long receptor_id, String mensaje) {
         this.nombre = nombre;
         this.emisor = emisor;
-        this.receptor = receptor;
+        this.receptor_id = receptor_id;
         this.mensaje = mensaje;
     }
 
