@@ -1,6 +1,5 @@
 package com.burgosmanuel.portfolio;
 
-import com.burgosmanuel.portfolio.security.repository.RoleRepository;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
