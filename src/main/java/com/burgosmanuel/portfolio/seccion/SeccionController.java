@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin
+@CrossOrigin(origins = "https://burgosmanuel.ar")
 @RestController
 @RequestMapping("/secciones")
 @Tag(name = "Secciones", description = "Se encarga de manejar la información de secciones como Proyectos, Habilidades, etc.")

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin
+@CrossOrigin(origins = "https://burgosmanuel.ar")
 @RestController
 @RequestMapping("/proyectos")
 @Tag(name = "Proyectos", description = "Se encarga de las operaciones a realizar en los Proyectos.")
